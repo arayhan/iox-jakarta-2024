@@ -1,5 +1,7 @@
+// FIXME update to be more friendly for workshop audiences
 import React from "react";
 import clsxm from "@/utils/clsxm";
+import { useRouter } from "next/router";
 
 type Variant = "link" | "outline" | "solid";
 type Color =
@@ -51,8 +53,11 @@ const Button: React.FC<ButtonProps> = ({
 	href,
 	className,
 	children,
+	onClick,
 	...props
 }) => {
+	const router = useRouter();
+
 	const classes = clsxm(
 		baseClasses,
 		variantClasses[variant],
@@ -61,18 +66,14 @@ const Button: React.FC<ButtonProps> = ({
 		className
 	);
 
-	if (href) {
-		return (
-			<a href={href} className={classes} {...props}>
-				{children}
-			</a>
-		);
-	}
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		href ? router.push(href) : onClick?.(event);
+	};
 
 	return (
-		<button className={classes} {...props}>
+		<Button className={classes} onClick={handleClick} {...props}>
 			{children}
-		</button>
+		</Button>
 	);
 };
 
