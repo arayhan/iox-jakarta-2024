@@ -1,8 +1,9 @@
 import Button from "@/components/Button";
+import Input from "@/components/Input";
 
 export default function Home() {
 	return (
-		<main className="flex flex-col items-center justify-between min-h-screen p-24 text-center">
+		<main className="flex flex-col items-center justify-center gap-8 min-h-screen p-24 text-center">
 			<header>
 				<h1>RECIPE ROULETTE</h1>
 
@@ -25,18 +26,9 @@ export default function Home() {
 			<div className="flex flex-col items-center">
 				<h2>Have a recipe to share?</h2>
 				<p>Click the button below to add your recipe to our database.</p>
-				<button>Add a recipe</button>
+				<Input placeholder="Recipe name" />
+				<Button>Add a recipe</Button>
 			</div>
-
-			<div className="flex flex-col items-center">
-				<h2>Need help?</h2>
-				<p>Click the button below to contact us.</p>
-				<button>Contact us</button>
-			</div>
-
-			<footer className="flex flex-col items-center">
-				<p>&copy; 2021 Recipe Roulette</p>
-			</footer>
 		</main>
 	);
 }
